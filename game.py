@@ -4,6 +4,7 @@ class player:
     def __init__(self):
         self.money = 1000
         self.portfolio = {}
+        self.done = False
     
     def buy(self, stock, shares):
         if self.money - stock.price*shares >= 0:
@@ -21,6 +22,10 @@ class player:
             return "Succesful Transaction!"
         else:
             return "Too Many Stocks!"
+    
+    def finish(self):
+        self.done = True
+        return "Finished"
 
 
 class stock:
@@ -40,5 +45,5 @@ class stock:
             self.price = self.price + random.random()*30 - 15
         if risk == high:
             self.price = self.price + random.random()*50 - 25
-    
 
+ 
