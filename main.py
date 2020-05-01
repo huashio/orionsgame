@@ -2,47 +2,47 @@ import game
 import time
 import sys
 
-# players = [0,0,0]#figure out a way to get players from an actauly list of players that plays
-# stockNum = 10 #the user will be able to choose the amount he wants later
-# rounds = 25 #the user will be able to choose the amount he wants later
-# roundTime = 60 #player should be able to choose this later one too
+players = [0,0,0]#figure out a way to get players from an actauly list of players that plays
+stockNum = 10 #the user will be able to choose the amount he wants later
+rounds = 25 #the user will be able to choose the amount he wants later
+roundTime = 60 #player should be able to choose this later one too
 
-# for i in range(len(players)):
-#     players[i] = game.player()
+for i in range(len(players)):
+    players[i] = game.player()
 
-# def checkDone(): #checks every second if all players have selected done
-#     for i in players:
-#         if i.done == False:
-#             return False
-#     return True
+def checkDone(): #checks every second if all players have selected done
+    for i in players:
+        if i.done == False:
+            return False
+    return True
 
-# # Timer for each round
-# for i in range(rounds):
-#     uin = roundTime #round length, players might choose that
-#     bin = 10 #time between rounds
-#     print("Round: " + str(i+1), end="\n\n")
-#     for j in players:
-#         j.done = False
-#     while uin > 0:
-#         m, s= divmod(uin, 60)
-#         time_left = str(m).zfill(2) + ":" + str(s).zfill(2)
-#         print(time_left, end="\n")
-#         time.sleep(1)
-#         uin -= 1
-#         if checkDone() == True:
-#             break
+# Timer for each round
+for i in range(rounds):
+    uin = roundTime #round length, players might choose that
+    bin = 10 #time between rounds
+    print("Round: " + str(i+1), end="\n\n")
+    for j in players:
+        j.done = False
+    while uin > 0:
+        m, s= divmod(uin, 60)
+        time_left = str(m).zfill(2) + ":" + str(s).zfill(2)
+        print(time_left, end="\n")
+        time.sleep(1)
+        uin -= 1
+        if checkDone() == True:
+            break
             
 
 
-#     print("ROUND OVER", end="\n")
-#     time.sleep(2)  
+    print("ROUND OVER", end="\n")
+    time.sleep(2)  
     
-#     while bin > 0:
-#         m, s= divmod(bin, 10)
-#         time_left = str(m).zfill(2) + ":" + str(s).zfill(2)
-#         print("NEXT ROUND IN: " + time_left, end="\n")
-#         time.sleep(1)
-#         bin -= 1
+    while bin > 0:
+        m, s= divmod(bin, 10)
+        time_left = str(m).zfill(2) + ":" + str(s).zfill(2)
+        print("NEXT ROUND IN: " + time_left, end="\n")
+        time.sleep(1)
+        bin -= 1
         
 def stocks() :
     while True:
@@ -73,7 +73,6 @@ Select the number for the action that you would like to do?
         else:
             print ("invalid selection! ")
 stock_list = ["TEL", "AVB", "AC", "JEP", "IPH", "SAM", "XON", "BER", "FUR", "DEN"]
-buy_list = []
 
 def showStocks () :
     print()
@@ -84,7 +83,7 @@ def showStocks () :
 def addItem () :
     item = input("Enter stocks you want to add: ")    
     if item in stock_list:
-        buy_list.append (item)
+        players.buy() #this part is gonna change
         print(item + " has been added to your stocks. ")
     else:    
         print("Stock not available. ")
