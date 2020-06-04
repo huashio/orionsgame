@@ -33,14 +33,27 @@ function changeMouse(mouseType) {
 
 
 /* GAME FUNCTIONS */
-function btnHoverCheck(x, y, w, h) {
-    if (mouse[0] > x &&
-        mouse[0] < x + w &&
-        mouse[1] > y &&
-        mouse[1] < y + h) 
-    {
-        return true;
-    } else {
+function btnHoverCheck(x, y, w, h, shape = "rect") {
+    if (shape == "rect") {
+        if (mouse[0] > x &&
+            mouse[0] < x + w &&
+            mouse[1] > y &&
+            mouse[1] < y + h) 
+        {
+            return true;
+        } else {
+            return false;
+        }
+    } else if (shape == "ellipse") {
+        for (var i = -w; i < w; i++) {
+            if (mouse[0] == x+i &&
+                mouse[1] > y-Math.sqrt((1-i**2/(w)**2)*(h)**2) &&
+                mouse[1] < y+Math.sqrt((1-i**2/(w)**2)*(h)**2)) 
+            {
+                return true;
+            }
+            //console.log(i.toString() + "    " + Math.sqrt((1-i**2/(w/2)**2)*(h/2)**2))
+        }
         return false;
     }
 }
